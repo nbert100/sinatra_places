@@ -20,7 +20,10 @@ class PlacesController < ApplicationController
   end
   
   #show route for place
-  
+  get '/places/:id' do 
+    @place = Place.find(params[:id])
+    erb :show
+  end
   
   #index route for all places
 end
