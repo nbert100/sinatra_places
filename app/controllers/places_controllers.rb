@@ -21,21 +21,40 @@ class PlacesController < ApplicationController
   
   #show route for place
   get '/places/:id' do 
-    @place = Place.find(params[:id])
+    set_place
     erb :'/places/show'
   end
   
   #this route should send us to places/edit.erb which will render an edit form
+  #should make sure can only edit own entry
+  #should not be able to create blank entry
   get 'places/:id/edit' do
-    @place = Place.find(params[:id])
-    erb :'/places/edit'
+    set_place
+    if logged_in?
+      if @place.user == current_user
+        erb :'/places/edit'
+      else
+        #user homepage? or index of all places
+        redirect "users/#{current_user.id}"
+      end
+    else
+      redirect '/'
+    end
   end
   
   patch '/places/:id' do
-    #find place 
-    @place = Place.find(params[:id])
-    #update place 
-    # redirect to show page 
+    set_place
+    if logged_in?
+      
+      if @place.user == current_user
+        @place.update(city_name: params[:city_name])
+        redirect "/places/#{@place.id}"
+      else
+        redirect "users/#{current_user.id}"
+      end
+    else
+      redirect '/'
+    end
   end
   
   private
