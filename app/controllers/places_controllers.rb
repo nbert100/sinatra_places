@@ -22,8 +22,12 @@ class PlacesController < ApplicationController
   #show route for place
   get '/places/:id' do 
     @place = Place.find(params[:id])
-    erb :show
+    erb :'/places/show'
   end
   
-  #index route for all places
+  #this route should send us to places/edit.erb which will render an edit form
+  get 'places/:id/edit' do
+    erb :'/places/edit'
+    
+  end
 end
