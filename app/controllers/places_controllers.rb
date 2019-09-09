@@ -27,7 +27,20 @@ class PlacesController < ApplicationController
   
   #this route should send us to places/edit.erb which will render an edit form
   get 'places/:id/edit' do
+    @place = Place.find(params[:id])
     erb :'/places/edit'
-    
+  end
+  
+  patch '/places/:id' do
+    #find place 
+    @place = Place.find(params[:id])
+    #update place 
+    # redirect to show page 
+  end
+  
+  private
+  
+  def set_place
+    @place = Place.find(params[:id])
   end
 end
