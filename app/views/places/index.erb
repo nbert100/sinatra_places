@@ -1,1 +1,8 @@
-index of places
+All Places
+<% @places.each do |place| %>
+  <h4><a href="/places/<%= place.id %>"><%= @place.created_at %></a></h4>
+  <p><%= @place.city_name %></p>
+  <p>Added by <%= place.user.name %></p>
+  <br><br>
+  
+<% end %>

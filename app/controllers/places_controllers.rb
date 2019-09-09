@@ -1,4 +1,10 @@
 class PlacesController < ApplicationController
+  
+  get 'places' do
+    @places = Place.all
+    erb :'places/index'
+  end
+  
   #get places new to render form to create new entry
   get '/places/new' do
     erb :'/places/new'
