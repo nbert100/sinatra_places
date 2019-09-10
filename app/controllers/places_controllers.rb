@@ -62,6 +62,16 @@ class PlacesController < ApplicationController
       redirect '/'
     end
   end
+ #job is to delete journal entry (not its job to show anything) 
+  delete '/places/:id' do
+    set_place
+    if authorized_to_edit?(@place)
+      @place.destroy
+      redirect '/places'
+    else
+      redirect '/places'
+    end
+  end
   
   private
   
