@@ -14,10 +14,13 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+    
     <div class="nav">
+      <% if logged_in? %>
       <a href="/logout">Log Out</a>
       <a href="/places">Places I've Been</a>
       <a href="/places/new">Add a New Place</a>
+      <% end %>
     </div>
     <div class="wrapper">
 
