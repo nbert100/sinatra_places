@@ -52,7 +52,7 @@ class PlacesController < ApplicationController
     set_place
     if logged_in?
       
-      if @place.user == current_user
+      if @place.user == current_user && params[:city_name] != ""
         @place.update(city_name: params[:city_name])
         redirect "/places/#{@place.id}"
       else
