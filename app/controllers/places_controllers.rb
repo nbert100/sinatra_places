@@ -1,8 +1,8 @@
 class PlacesController < ApplicationController
   
-  get 'places' do
+  get '/places' do
     @places = Place.all
-    erb :'places/index'
+    erb :'/places/index'
   end
   
   #get places new to render form to create new entry
@@ -20,7 +20,8 @@ class PlacesController < ApplicationController
     end
     if params[:city_name] !=""
       @place = Place.create(city_name: params[:city_name], user_id: current_user.id)
-      redirect "/places/#{@place.id}"
+      redirect "/places/#{@place.id}" 
+      #not able to redirect here. should it be @place.user.id?
     else
       redirect '/places/new'
   end
@@ -34,15 +35,14 @@ class PlacesController < ApplicationController
   #this route should send us to places/edit.erb which will render an edit form
   #should make sure can only edit own entry
   #should not be able to create blank entry
-  get 'places/:id/edit' do
+  get '/places/:id/edit' do
     set_place
-    if logged_in?
-      if @place.user == current_user
+    if authorized_to_edit?(@place)
         erb :'/places/edit'
-      else
-        #user homepage? or index of all places
-        redirect "users/#{current_user.id}"
-      end
+      # else
+      #   #user homepage? or index of all places
+      #   redirect "/users/#{current_user.id}"
+      # end
     else
       redirect '/'
     end
@@ -52,7 +52,7 @@ class PlacesController < ApplicationController
     set_place
     if logged_in?
       
-      if @place.user == current_user && params[:city_name] != ""
+      if authorized_to_edit? && params[:city_name] != ""
         @place.update(city_name: params[:city_name])
         redirect "/places/#{@place.id}"
       else
@@ -78,4 +78,5 @@ class PlacesController < ApplicationController
   def set_place
     @place = Place.find(params[:id])
   end
+end
 end

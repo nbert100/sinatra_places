@@ -9,12 +9,12 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "places_app"
   end
 
-  get "/" do
+  get '/' do
     if logged_in?
       redirect "/users/#{current_user.id}"
     else
-    erb :welcome
-  end
+      erb :welcome
+    end
   end
   
   helpers do
