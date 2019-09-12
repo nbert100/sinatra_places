@@ -2,6 +2,8 @@
 City Name:
 <p><%= @place.city_name %></p>
 
+<% if authorized_to_edit?(@place) %>
 <a href="/places/<%= @place.id %>/edit" >Edit</a>
 
 <a>Delete</a>
+<% end %>

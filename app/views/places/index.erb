@@ -1,6 +1,7 @@
 <h2>All the Places!</h2>
+<br><br>
 <% @places.each do |place| %>
-  <h4><%= place.city_name %></h4>
+  <h4><a href="/places/<%= place.id%>"><%= place.city_name %></a></h4>
   <p><%= place.created_at %></p>
   <p>Added by: <%= place.user.name %></p> 
 <br><br>

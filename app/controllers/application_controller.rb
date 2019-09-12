@@ -34,6 +34,7 @@ class ApplicationController < Sinatra::Base
     end
     
     #build helper method for redirecting if not logged in
+    
   end 
 
 
