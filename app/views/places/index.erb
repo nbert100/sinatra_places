@@ -1,10 +1,7 @@
-All Places We've Been
+<h2>All the Places!</h2>
 <% @places.each do |place| %>
-  <h4><a href="/places/<%= place.id %>"><%= @place.created_at %></a></h4>
-  <p><%= @place.city_name %></p>
-  <p>Added by <%= place.user.name %></p>
-  <br><br>
-  
+  <h4><%= place.city_name %></h4>
+  <p><%= place.created_at %></p>
+  <p>Added by: <%= place.user.name %></p> 
+<br><br>
 <% end %>
-
-<!--error in all places after creating new user-->
