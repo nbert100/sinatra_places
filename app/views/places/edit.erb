@@ -1,8 +1,8 @@
 <h2>Edit Place</h2>
+
 <form class="" action="/places/<%= @place.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="city_name">City:</label>
-  <!--#adjust size of the text box (size = auto?)-->
   <input type="text" name="city_name" value="<%= @place.city_name %>">
   <input type="submit" name="" value="Edit Place">
 </form>

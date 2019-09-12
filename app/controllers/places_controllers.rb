@@ -30,55 +30,27 @@ class PlacesController < ApplicationController
 end
 #   #show route for place
   get '/places/:id' do 
-    @place = Place.find(params[:id])
+    set_place
     erb :'/places/show'
   end
   
-#   #this route should send us to places/edit.erb which will render an edit form
-#   #should make sure can only edit own entry
-#   #should not be able to create blank entry
-#   get '/places/:id/edit' do
-#     set_place
-#     if authorized_to_edit?(@place)
-#         erb :'/places/edit'
-#       # else
-#       #   #user homepage? or index of all places
-#       #   redirect "/users/#{current_user.id}"
-#       # end
-#     else
-#       redirect '/'
-#     end
-#   end
+  #should send up to places/edit.erb which will render edit form
+  get '/places/:id/edit' do
+   set_place
+    erb :'/places/edit'
+  end
   
-#   patch '/places/:id' do
-#     set_place
-#     if logged_in?
-      
-#       if authorized_to_edit? && params[:city_name] != ""
-#         @place.update(city_name: params[:city_name])
-#         redirect "/places/#{@place.id}"
-#       else
-#         redirect "users/#{current_user.id}"
-#       end
-#     else
-#       redirect '/'
-#     end
-#   end
-# #job is to delete journal entry (not its job to show anything) 
-#   delete '/places/:id' do
-#     set_place
-#     if authorized_to_edit?(@place)
-#       @place.destroy
-#       redirect '/places'
-#     else
-#       redirect '/places'
-#     end
-#   end
+  patch '/places/:id' do
+    set_place
+    #update place
+    @place.update(city_name: params[:city_name])
+    #redirect to ? probably show page
+    redirect "/places/#{@place.id}"
+  end
   
-#   private
-  
-#   def set_place
-#     @place = Place.find(params[:id])
-#   end
-# end
+  private 
+   
+   def set_place
+     @place = Place.find(params[:id])
+   end
 end
