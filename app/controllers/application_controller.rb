@@ -30,6 +30,7 @@ class ApplicationController < Sinatra::Base
     
     def authorized_to_edit?(place)
       place.user == current_user
+      
     end
     
     #build helper method for redirecting if not logged in

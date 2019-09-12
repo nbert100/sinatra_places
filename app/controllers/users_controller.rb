@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   #post usually creates something new (action going to be url)
   #creating a key value pair to the session hash (creating a session)
   #the purpose of this route is to receive the login form, find the use and log the user in
+  
   post '/login' do
     #find user 
     @user = User.find_by(username: params[:username])
@@ -28,19 +29,19 @@ end
   #sign up?
   # job is to render the signup form
   get '/signup' do
-    #erb (render) a view
     erb :signup
   end
   
   post '/users' do 
+
     #here is where we will create a new user and persist the new user to the database
     #only want to persist a user that has a name, username and pw
     #only job is to create, NOT show
-    if params[:name] !="" && params[:username] && params[:password]
+    if params[:name] != "" && params[:username] && params[:password]
       @user = User.create(params)
       session[:user_id] = @user.id
       # go to user show page? 
-      redirect to "/users/#{@user.id}"
+      redirect "/users/#{@user.id}"
     else 
       #invalid
       #stretch goal to include error message
@@ -50,7 +51,7 @@ end
   
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
-   erb :'/users/user_show'
+   erb :'/users/show'
   end
   
   get '/logout' do 
