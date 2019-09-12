@@ -5,5 +5,10 @@ City Name:
 <% if authorized_to_edit?(@place) %>
 <a href="/places/<%= @place.id %>/edit" >Edit</a>
 
-<a>Delete</a>
+
+<form class="" action="/places/<%= @place.id %>" method="post">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" name="" value="Delete">
+  
+</form>
 <% end %>

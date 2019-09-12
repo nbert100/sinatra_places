@@ -62,6 +62,16 @@ end
     end
   end
   
+  delete '/places/:id' do
+    set_place
+    if authorized_to_edit?(@place)
+      @place.destroy
+      redirect '/places' 
+    else
+      redirect '/places'
+    end
+  end
+  
   private 
    
    def set_place
