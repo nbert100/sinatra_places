@@ -36,16 +36,31 @@ end
   
   #should send up to places/edit.erb which will render edit form
   get '/places/:id/edit' do
-   set_place
-    erb :'/places/edit'
+  set_place
+    if logged_in?
+      if @place.user == current_user
+        erb :'/places/edit'
+      else
+        #you are not authorized to edit this message
+        redirect "users/#{current_user.id}"
+      end
+    else
+      redirect '/'
+    end
   end
   
   patch '/places/:id' do
-    set_place
-    #update place
-    @place.update(city_name: params[:city_name])
-    #redirect to ? probably show page
-    redirect "/places/#{@place.id}"
+  set_place
+    if logged_in?
+      if @place.user == current_user
+        @place.update(city_name: params[:city_name])
+        redirect "/places/#{@place.id}"
+      else 
+        redirect "users/#{current_user.id}"
+      end
+    else
+      redirect '/'
+    end
   end
   
   private 
