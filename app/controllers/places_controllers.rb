@@ -1,8 +1,11 @@
 class PlacesController < ApplicationController
   
   get '/places' do
-    @places = Place.all
+    @places = current_user.places
     erb :'/places/index'
+    
+    #logged in? if not redirect to login page
+    
   end
 
   #get places new to render form to create new entry
@@ -52,7 +55,10 @@ end
   set_place
     if logged_in?
       if @place.user == current_user
-        @place.update(city_name: params[:city_name])
+        city_name = params[:city_name] || @place.city_name
+        visited = params[:visited] || @place.visited
+        @place.update(city_name: city_name, visited: visited)
+        binding.pry
         redirect "/places/#{@place.id}"
       else 
         redirect "users/#{current_user.id}"

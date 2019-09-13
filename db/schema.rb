@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190901173551) do
+ActiveRecord::Schema.define(version: 20190912230136) do
 
   create_table "places", force: :cascade do |t|
     t.string   "city_name"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "visited",    default: false
   end
 
   create_table "users", force: :cascade do |t|
