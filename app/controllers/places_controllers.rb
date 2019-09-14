@@ -21,7 +21,7 @@ class PlacesController < ApplicationController
     #and only if user is logged in 
     redirect_if_not_logged_in
     if params[:city_name] != ""
-      flash[:message] = "New place added!"
+      flash[:message] = "#{@place.city_name} added!"
       @place = Place.create(city_name: params[:city_name], user_id: current_user.id)
       redirect "/places/#{@place.id}" 
     else
@@ -57,7 +57,7 @@ end
         redirect "/places/#{@place.id}"
       else 
         #use the fancy error to differentiate between blank issue and authorization
-        flash[:error] = "You tried it! You aren't authorized to edit this page."
+        flash[:error] = "Oops! Something went wrong"
         redirect "users/#{current_user.id}"
       end
   end
