@@ -17,9 +17,10 @@
     
     <div class="nav">
       <% if logged_in? %>
-      <a href="/logout">Log Out</a>
+      <a href="/users/<%= current_user.id %>">Homepage</a>
       <a href="/places">Places We've Been</a>
       <a href="/places/new">Add a New Place</a>
+      
       <% end %>
     </div>
     
@@ -33,6 +34,9 @@
         <%= yield %>
 
       <footer class="branding">
+         <% if logged_in? %>
+        <a href="/logout">Log Out</a>
+        <% end %>
         <small>&copy; 2019 <strong>Places</strong></small>
       </footer>
     </div>
