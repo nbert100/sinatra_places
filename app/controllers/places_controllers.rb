@@ -21,8 +21,8 @@ class PlacesController < ApplicationController
     #and only if user is logged in 
     redirect_if_not_logged_in
     if params[:city_name] != ""
-      flash[:message] = "#{@place.city_name} added!"
       @place = Place.create(city_name: params[:city_name], user_id: current_user.id)
+      flash[:message] = "#{@place.city_name} added!"
       redirect "/places/#{@place.id}" 
     else
       flash[:error] = "Oops! Please try again."
