@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
     #log user in - create user session
     session[:user_id] = @user.id
-    #redirect to user
+    
     redirect "users/#{@user.id}"
   else 
     flash[:error] = "Invalid Entry. Please try again."
@@ -38,18 +38,19 @@ end
     if params[:name] != "" && params[:username] && params[:password]
       @user = User.create(params)
       session[:user_id] = @user.id
-      # go to user show page? 
+      flash[:message] = "Sign Up Successful!"
       redirect "/users/#{@user.id}"
     else 
       #invalid
-      #stretch goal to include error message
+      flash[:error] = "Oops! Something went wrong.Please try again."
       redirect '/signup'
     end
   end
   
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
-   erb :'/users/show'
+    redirect_if_not_logged_in
+    erb :'/users/show'
   end
   
   get '/logout' do 

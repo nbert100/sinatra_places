@@ -31,12 +31,14 @@ class ApplicationController < Sinatra::Base
     
     def authorized_to_edit?(place)
       place.user == current_user
-      
     end
     
-    #build helper method for redirecting if not logged in
+    def redirect_if_not_logged_in
+      if !logged_in?
+        flash[:error] = "Please log in to view this page"
+        redirect '/'
+      end
+    end
     
   end 
-
-
 end
