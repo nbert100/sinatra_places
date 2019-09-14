@@ -1,4 +1,9 @@
 
-<h2>Hi <%= @user.name %>!</h2>
+<h2><%= @user.name %>'s Homepage</h2>
 <h6>Username: <%= @user.username %></h6>
-<!--<h6>Add user's visited places</h6>-->
+<% @user.places.each do |place| %>
+<h4><a href="/places/<%= place.id%>"><%= place.city_name %></a></h4>
+<br>
+<% end %>
+
+
