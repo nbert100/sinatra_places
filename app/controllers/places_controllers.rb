@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
   
   get '/places' do
-    @places = current_user.places
+    @places = Place.all
     erb :'/places/index'
     
     #logged in? if not redirect to login page
@@ -23,10 +23,11 @@ class PlacesController < ApplicationController
       redirect '/'
     end
     if params[:city_name] != ""
+      flash[:message] = "New place added!"
       @place = Place.create(city_name: params[:city_name], user_id: current_user.id)
       redirect "/places/#{@place.id}" 
-      #not able to redirect here. should it be @place.user.id?
     else
+      flash[:error] = "Oops! Please try again."
       redirect '/places/new'
   end
 end

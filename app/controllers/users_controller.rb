@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   
-  #routes needed for someone to log in 
-  
   #purpose of this rute is to render log in page (form)
   get '/login' do
     erb :login
@@ -15,13 +13,13 @@ class UsersController < ApplicationController
     #find user 
     @user = User.find_by(username: params[:username])
     #authenticate user 
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
     #log user in - create user session
     session[:user_id] = @user.id
     #redirect to user
     redirect "users/#{@user.id}"
   else 
-    #error message
+    flash[:error] = "Invalid Entry. Please try again."
     redirect "/login"
   end
 end

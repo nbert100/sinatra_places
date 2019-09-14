@@ -18,12 +18,18 @@
     <div class="nav">
       <% if logged_in? %>
       <a href="/logout">Log Out</a>
-      <a href="/places">Places I've Been</a>
+      <a href="/places">Places We've Been</a>
       <a href="/places/new">Add a New Place</a>
       <% end %>
     </div>
+    
     <div class="wrapper">
-
+    <% if flash[:message] %>
+    <h4><%= flash[:message] %></h4>
+    <% end %>
+    <% if flash[:error] %>
+    <h4 style="color: red;"><%= flash[:error] %></h4>
+    <% end %>
         <%= yield %>
 
       <footer class="branding">
