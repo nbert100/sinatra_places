@@ -1,6 +1,8 @@
-An app to keep track of places you've been and places you want to go
+Places 
 
-LICENSE
+Places is a Sinatra web application designed to allow users to sign up, log in, create new places by city name, and track whether or not these places have been visited. Users can look at a list of all places visited by all users, look at other users' homepages and even find out more about each place listed. Users can only edit their own places. 
+
+
 
 Copyright <2019> <nbert100>
 
