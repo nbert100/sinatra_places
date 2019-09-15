@@ -32,7 +32,7 @@
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 45px;
     line-height: 54px;
    
   }
@@ -58,9 +58,19 @@
     
   }
   
-  .pagetitle {text-align: center;}
+  .pagetitle {
+    text-align: center;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    border-bottom-style: dotted;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  }
   
-  .subheading {text-align: center;}
+  .subheading {
+    text-align: center;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: normal;
+  }
   
   
 
@@ -160,11 +170,17 @@ div.nav a:hover {
   text-align: right;
 }
 
+div.homelink {
+  text-align: center;
+  font-size: 20px;
+}
+
 input[type=text] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
 input[type=password] {
@@ -172,10 +188,12 @@ input[type=password] {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
 input:focus {
   border: 3px solid #555;
+  border-radius: 4px;
 }
 
 

@@ -20,13 +20,11 @@ class ApplicationController < Sinatra::Base
   
   helpers do
     def logged_in?
-      # true if use is logged in, otherwise false
       !!current_user
     end
     
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
-      #energy saver
     end
     
     def authorized_to_edit?(place)

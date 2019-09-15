@@ -3,22 +3,13 @@ class PlacesController < ApplicationController
   get '/places' do
     @places = Place.all
     erb :'/places/index'
-    
-    #logged in? if not redirect to login page
-    
   end
 
-  #get places new to render form to create new entry
   get '/places/new' do
       erb :'/places/new'
   end 
    
-
-  #post places to create new places
-  
   post '/places' do
-    #want to create new place and save it to the database but only if it has content
-    #and only if user is logged in 
     redirect_if_not_logged_in
     if params[:city_name] != ""
       @place = Place.create(city_name: params[:city_name], user_id: current_user.id)
@@ -29,13 +20,13 @@ class PlacesController < ApplicationController
       redirect '/places/new'
   end
 end
-#   #show route for place
+
   get '/places/:id' do 
     set_place
     erb :'/places/show'
   end
   
-  #should send up to places/edit.erb which will render edit form
+  
   get '/places/:id/edit' do
   set_place
   redirect_if_not_logged_in
@@ -50,6 +41,7 @@ end
   set_place
   redirect_if_not_logged_in
       if !params[:city_name].empty? && params[:city_name] !=" "
+        binding.pry
         city_name = params[:city_name] || @place.city_name
         visited = params[:visited] || @place.visited
         @place.update(city_name: city_name, visited: visited)

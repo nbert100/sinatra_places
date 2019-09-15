@@ -1,50 +1,36 @@
 class UsersController < ApplicationController
   
-  #purpose of this rute is to render log in page (form)
   get '/login' do
     erb :login
   end
   
-  #post usually creates something new (action going to be url)
-  #creating a key value pair to the session hash (creating a session)
-  #the purpose of this route is to receive the login form, find the use and log the user in
-  
   post '/login' do
-    #find user 
-    @user = User.find_by(username: params[:username])
-    #authenticate user 
+      @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
-    #log user in - create user session
-    session[:user_id] = @user.id
-    flash[:message] = "Hi, #{@user.name}!"
-    redirect "users/#{@user.id}"
-  else 
-    flash[:error] = "Invalid Entry. Please try again."
-    redirect "/login"
+      session[:user_id] = @user.id
+      flash[:message] = "Hi, #{@user.name}!"
+      redirect "users/#{@user.id}"
+    else 
+      flash[:error] = "Invalid Entry. Please try again."
+      redirect "/login"
+    end
   end
-end
 
-  #sign up?
-  # job is to render the signup form
   get '/signup' do
     erb :signup
   end
   
   post '/users' do 
-
-    #here is where we will create a new user and persist the new user to the database
-    #only want to persist a user that has a name, username and pw
-    #only job is to create, NOT show
-    if params[:name] != "" && params[:username] && params[:password]
-      @user = User.create(params)
+    @user = User.new(params)
+      if @user.save
       session[:user_id] = @user.id
-      flash[:message] = "Sign Up Successful!"
+      flash[:message] = "Sign Up Successful! Welcome #{@user.name}!"
       redirect "/users/#{@user.id}"
     else 
-      #invalid
-      flash[:error] = "Oops! Something went wrong.Please try again."
+      flash[:error] = "Oops! #{@user.errors.full_messages.to_sentence}"
       redirect '/signup'
     end
+  
   end
   
   get '/users/:id' do
