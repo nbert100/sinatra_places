@@ -167,6 +167,7 @@ input:focus {
 
 
 
+
 }
 
 @media screen and (max-width: 600px) {
@@ -200,5 +201,6 @@ input:focus {
     line-height: 24px;
   }
   
+
 
 }
