@@ -3,7 +3,7 @@
 <center><h5>Username:  <%= @user.username %></h5></center>
 <br>
 <br>
-<h3> Nia's Places</h3>
+<h3><%= @user.name %>'s Places</h3>
 <br>
 <% @user.places.each do |place| %>
 <p><a href="/places/<%= place.id%>"><%= place.city_name %></a><p>

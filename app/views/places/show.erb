@@ -2,9 +2,9 @@
 <h2>City Name: <%= @place.city_name %></h2>
 
 <% if authorized_to_edit?(@place) %>
-<a href="/places/<%= @place.id %>/edit" >Edit</a>
-
-
+<a href="/places/<%= @place.id %>/edit">Edit</a>
+<br>
+<br>
 <form class="" action="/places/<%= @place.id %>" method="post">
 <input type="hidden" name="_method" value="DELETE">
 <input type="submit" class="button" name="" value="Delete">
@@ -20,3 +20,5 @@
 <%end%>
 
 <% end %>
+<br>
+<a href="/users/<%=@place.user.id%>">Back to <%=@place.user.name%>'s Homepage</a>
