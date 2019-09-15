@@ -1,9 +1,12 @@
 
-<h2><%= @user.name %>'s Homepage</h2>
-<h6>Username: <%= @user.username %></h6>
-<% @user.places.each do |place| %>
-<h4><a href="/places/<%= place.id%>"><%= place.city_name %></a></h4>
+<h2 class="pagetitle"><%= @user.name %>'s Homepage</h2>
+<center><h6>Username: <%= @user.username %></h6></center>
 <br>
+<br>
+<h3> Nia's Places</h3>
+<br>
+<% @user.places.each do |place| %>
+<p><a href="/places/<%= place.id%>"><%= place.city_name %></a><p>
 <% end %>
 
 

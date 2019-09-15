@@ -33,7 +33,7 @@
   h1 {
     font-size: 36px;
     line-height: 54px;
-    text-align: center;
+   
   }
 
   h2 {
@@ -46,7 +46,13 @@
   h3 {
     font-size: 18px;
     line-height: 36px;
-    text-align: center;
+  }
+  
+  .pagetitle {text-align: center;}
+  
+  .subheading {text-align: center;}
+  
+  
   }
 
   p {
@@ -118,10 +124,14 @@ a:hover {
   h1 {
     font-size: 24px;
     line-height: 36px;
+    text-align: center;
   }
 
   h2 {
     font-size: 18px;
     line-height: 24px;
   }
+  
+
+
 }
