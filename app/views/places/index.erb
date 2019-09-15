@@ -2,7 +2,7 @@
 <br><br>
 <% @places.each do |place| %>
   <h4><a href="/places/<%= place.id%>"><%= place.city_name %></a></h4>
-  <p>Added by <a href="/users/<%= place.user.id %>"><%= place.user.name %></a> at <%= place.created_at.strftime('%b %e, %Y(%l:%M%P)') %></p>
+  <p>Added by <a href="/users/<%= place.user.id %>"><%= place.user.name %></a> on <%= place.created_at.strftime('%b %e, %Y (%l:%M%P)') %></p>
    
 <br><br>
 <% end %>

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
     #log user in - create user session
     session[:user_id] = @user.id
-    
+    flash[:message] = "Hi, #{@user.name}!"
     redirect "users/#{@user.id}"
   else 
     flash[:error] = "Invalid Entry. Please try again."
@@ -55,6 +55,7 @@ end
   
   get '/logout' do 
     session.clear
+    flash[:message] = "See you soon!"
     redirect '/'
   end
 end
