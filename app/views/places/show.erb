@@ -1,6 +1,5 @@
 
-<h2>City Name:</h2>
-<p><%= @place.city_name %></p>
+<h2>City Name: <%= @place.city_name %></h2>
 
 <% if authorized_to_edit?(@place) %>
 <a href="/places/<%= @place.id %>/edit" >Edit</a>
@@ -8,15 +7,16 @@
 
 <form class="" action="/places/<%= @place.id %>" method="post">
 <input type="hidden" name="_method" value="DELETE">
-<input type="submit" name="" value="Delete">
+<input type="submit" class="button" name="" value="Delete">
 </form>
 
 <%if !@place.visited %>
 <form class="" action="/places/<%= @place.id %>" method="post">
 <input type="hidden" name="_method" value="patch">
 <input type="hidden" name="visited" value="true">
-<input type="submit" name="" value="Mark as Visited">
+<input type="submit" class="button" name="" value="Mark as Visited">
 </form>
+
 <%end%>
 
 <% end %>

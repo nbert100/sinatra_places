@@ -53,7 +53,6 @@
   .subheading {text-align: center;}
   
   
-  }
 
   p {
     margin-bottom: 18px;
@@ -99,6 +98,50 @@ a:hover {
   background-color: lightgreen;
 }
 
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #6495ED;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+    -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  float: left;
+}
+
+.button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+div.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+div.nav a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+
+div.nav a:hover {
+  background-color: #555;
+  color: white;
+}
+
 }
 
 @media screen and (max-width: 600px) {
@@ -132,6 +175,5 @@ a:hover {
     line-height: 24px;
   }
   
-
 
 }
