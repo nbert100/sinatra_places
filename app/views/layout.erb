@@ -21,19 +21,18 @@
       <a href="/places">Places</a>
       <a href="/places/new">Add a New Place</a>
       <a href="/logout">Log Out</a>
-      
       <% end %>
     </div>
     
     <div class="wrapper">
-    <% if flash[:message] %>
-    <h4 style="size: 14px; color: green;"><%= flash[:message] %></h4>
-    <br>
-    <% end %>
-    <% if flash[:error] %>
-    <h4 style="color: red;"><%= flash[:error] %></h4>
-    <br>
-    <% end %>
+      <% if flash[:message] %>
+      <h4 style="size: 14px; color: green;"><%= flash[:message] %></h4>
+      <br>
+      <% end %>
+      <% if flash[:error] %>
+      <h4 style="color: red;"><%= flash[:error] %></h4>
+      <br>
+      <% end %>
         <%= yield %>
 
       <footer class="branding">

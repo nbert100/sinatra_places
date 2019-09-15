@@ -22,8 +22,8 @@ class PlacesController < ApplicationController
 end
 
   get '/places/:id' do 
-    set_place
-    erb :'/places/show'
+      set_place 
+      erb :'/places/show'
   end
   
   
@@ -40,11 +40,12 @@ end
   patch '/places/:id' do
   set_place
   redirect_if_not_logged_in
-      if !params[:city_name].empty? && params[:city_name] !=" "
-        binding.pry
+      if params[:city_name] != ""
+        
         city_name = params[:city_name] || @place.city_name
         visited = params[:visited] || @place.visited
         @place.update(city_name: city_name, visited: visited)
+      
         flash[:message] = "Change successful!"
         redirect "/places/#{@place.id}"
       else
@@ -68,7 +69,7 @@ end
   
   private 
    
-   def set_place
+  def set_place
      @place = Place.find(params[:id])
-   end
+  end
 end

@@ -1,10 +1,10 @@
 <h2 class="pagetitle">All the Places!</h2>
-<br><br>
+<br>
+<br>
 <% @places.each do |place| %>
   <h4><a href="/places/<%= place.id%>"><%= place.city_name %></a></h4>
   <p>Added by <a href="/users/<%= place.user.id %>"><%= place.user.name %></a> on <%= place.created_at.strftime('%b %e, %Y (%l:%M%P)') %></p>
-   
-<br><br>
+<br>
+<br>
 <% end %>
 
-<!--two each do visited vs not (if visited render here, if not render here)-->

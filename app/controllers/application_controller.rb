@@ -8,7 +8,14 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "places_app"
     register Sinatra::Flash
+    set :show_exceptions, false
+
   end
+  
+  error do
+    "Well! This is embarrassing! #{env['sinatra.error'].message}"
+  end
+  
 
   get '/' do
     if logged_in?
@@ -17,6 +24,8 @@ class ApplicationController < Sinatra::Base
       erb :welcome
     end
   end
+  
+
   
   helpers do
     def logged_in?
