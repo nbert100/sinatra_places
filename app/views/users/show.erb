@@ -6,7 +6,11 @@
 <h3><%= @user.name %>'s Places</h3>
 <br>
 <% @user.places.each do |place| %>
-<p><a href="/places/<%= place.id%>"><%= place.city_name %></a><p>
+<p><a href="/places/<%= place.id%>"><%= place.city_name %></a><% if place.visited %>
+  <small>(Visited)</small></p>
+
 <% end %>
+
+<%end%>
 
 

@@ -28,9 +28,11 @@
     <div class="wrapper">
     <% if flash[:message] %>
     <h4 style="size: 14px; color: green;"><%= flash[:message] %></h4>
+    <br>
     <% end %>
     <% if flash[:error] %>
     <h4 style="color: red;"><%= flash[:error] %></h4>
+    <br>
     <% end %>
         <%= yield %>
 

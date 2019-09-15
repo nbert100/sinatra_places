@@ -49,16 +49,16 @@ end
   patch '/places/:id' do
   set_place
   redirect_if_not_logged_in
-      if @place.user == current_user && params[:city_name] != ""
+      if !params[:city_name].empty? && params[:city_name] !=" "
         city_name = params[:city_name] || @place.city_name
         visited = params[:visited] || @place.visited
         @place.update(city_name: city_name, visited: visited)
-        flash[:message] = "Edit successful!"
+        flash[:message] = "Change successful!"
         redirect "/places/#{@place.id}"
-      else 
-        #use the fancy error to differentiate between blank issue and authorization
-        flash[:error] = "Oops! Something went wrong"
+      else
+        flash[:error] = "Oops! Please fill in city name"
         redirect "users/#{current_user.id}"
+        
       end
   end
   
