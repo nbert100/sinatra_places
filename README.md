@@ -1,10 +1,17 @@
-Places 
+# **Places**
 
 Places is a Sinatra web application designed to allow users to sign up, log in, create new places by city name, and track whether or not these places have been visited. Users can look at a list of all places visited by all users, look at other users' homepages and even find out more about each place listed. Users can only edit their own places. 
 
+## **Instructions**
+To run this app, clone the repo, run bundle install and then run shotgun.
+
+PC: Copy link after "Your server is running at" and paste it into your browser
+
+MAC: Type localhost:9393 into your browser
 
 
-Copyright <2019> <nbert100>
+### License
+*Copyright 2019 nbert100*
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
