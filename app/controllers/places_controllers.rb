@@ -30,7 +30,7 @@ end
   get '/places/:id/edit' do
   set_place
   redirect_if_not_logged_in
-      if @place.user == current_user
+      if authorized_to_edit?(@place)
         erb :'/places/edit'
       else
         redirect "users/#{current_user.id}"
@@ -40,7 +40,7 @@ end
   patch '/places/:id' do
   set_place
   redirect_if_not_logged_in
-      if params[:city_name] != ""
+      if authorized_to_edit?(@place) && params[:city_name] != ""
         
         city_name = params[:city_name] || @place.city_name
         visited = params[:visited] || @place.visited

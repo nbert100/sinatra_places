@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   end
   
   error do
-    "Well! This is embarrassing! #{env['sinatra.error'].message}"
+    "404 ERROR PAGE: Well! This is embarrassing! #{env['sinatra.error'].message}"
   end
   
 
